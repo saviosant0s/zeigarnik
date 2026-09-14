@@ -3,43 +3,46 @@
 @section('title', 'Ritual de Encerramento · Zeigarnik')
 
 @section('content')
-    <div x-data="{ segundos: 900 }" x-init="const t = setInterval(() => { if (segundos > 0) segundos--; else clearInterval(t) }, 1000)" class="mb-8">
-        <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-bold">Ritual de Encerramento</h1>
-            <span class="text-lg font-mono px-3 py-1 rounded-lg"
-                :class="segundos <= 60 ? 'bg-[#F3DEDE] text-[#8A4A4A]' : 'bg-white text-[#2A2722]'"
-                x-text="`${String(Math.floor(segundos/60)).padStart(2,'0')}:${String(segundos%60).padStart(2,'0')}`">
-            </span>
-        </div>
-        <p class="text-[#8A8171] text-sm mt-1">Feche cada loop: onde parou + próxima ação. Você tem 15 minutos.</p>
+    <div x-data="{ segundos: 900 }" x-init="const t = setInterval(() => { if (segundos > 0) segundos--; else clearInterval(t) }, 1000)"
+         class="bg-white border border-[#DDD5C7] rounded-2xl p-5 mb-6 mt-2 text-center">
+        <p class="text-xs text-[#8A8171] uppercase tracking-wide mb-1">Ritual de Encerramento</p>
+        <span class="text-4xl font-bold font-mono tracking-tight"
+            :class="segundos <= 60 ? 'text-[#8A4A4A]' : 'text-[#2A2722]'"
+            x-text="`${String(Math.floor(segundos/60)).padStart(2,'0')}:${String(segundos%60).padStart(2,'0')}`">
+        </span>
+        <p class="text-[#8A8171] text-xs mt-2">Feche cada loop: onde parou + próxima ação.</p>
     </div>
 
     <ul class="space-y-2 mb-8">
         @forelse ($tasks as $task)
-            <li class="flex items-center justify-between bg-white border border-[#DDD5C7] rounded-lg px-4 py-3">
-                <span class="font-medium">{{ $task->title }}</span>
-                <a href="{{ route('ritual.form', $task) }}" class="text-xs text-[#6B7A5E] hover:text-[#5C6A50]">Registrar →</a>
+            <li>
+                <a href="{{ route('ritual.form', $task) }}" class="flex items-center justify-between bg-white border border-[#DDD5C7] rounded-2xl px-4 py-4 active:bg-[#F4F0E8]">
+                    <span class="font-medium text-[15px]">{{ $task->title }}</span>
+                    <span class="text-xs text-[#6B7A5E] font-medium">Registrar →</span>
+                </a>
             </li>
         @empty
-            <li class="text-[#A79E8C] text-sm">Nenhuma tarefa aberta para encerrar.</li>
+            <li class="text-[#A79E8C] text-sm py-4 text-center">Nenhuma tarefa aberta para encerrar.</li>
         @endforelse
     </ul>
 
-    <form action="{{ route('ritual.finish') }}" method="POST" class="border-t border-[#DDD5C7] pt-6 space-y-4">
+    <form action="{{ route('ritual.finish') }}" method="POST" class="bg-white border border-[#DDD5C7] rounded-2xl p-4 space-y-4">
         @csrf
         <div>
-            <label class="text-sm text-[#8A8171] block mb-2">Humor de saída (1–5)</label>
-            <div class="flex gap-2">
+            <label class="text-sm text-[#8A8171] block mb-2">Humor de saída</label>
+            <div class="grid grid-cols-5 gap-2">
                 @for ($i = 1; $i <= 5; $i++)
                     <label class="cursor-pointer">
                         <input type="radio" name="humor_saida" value="{{ $i }}" class="peer sr-only">
-                        <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-white border border-[#DDD5C7] peer-checked:bg-[#6B7A5E] peer-checked:border-[#6B7A5E] peer-checked:text-white text-sm">{{ $i }}</span>
+                        <span class="flex items-center justify-center h-12 rounded-xl bg-[#F4F0E8] border border-[#DDD5C7] peer-checked:bg-[#6B7A5E] peer-checked:border-[#6B7A5E] peer-checked:text-white text-[15px] font-medium">{{ $i }}</span>
                     </label>
                 @endfor
             </div>
         </div>
         <textarea name="observacoes" placeholder="Observações (opcional)..." rows="2"
-            class="w-full bg-white border border-[#DDD5C7] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#6B7A5E]"></textarea>
-        <button class="bg-[#6B7A5E] hover:bg-[#5C6A50] text-white rounded-lg px-5 py-2.5 text-sm font-medium">Encerrar o dia</button>
+            class="w-full bg-[#F4F0E8] border border-[#DDD5C7] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[#6B7A5E]"></textarea>
+        <button class="w-full bg-[#6B7A5E] active:bg-[#5C6A50] text-white rounded-xl py-3.5 text-[15px] font-semibold">
+            Encerrar o dia
+        </button>
     </form>
 @endsection
