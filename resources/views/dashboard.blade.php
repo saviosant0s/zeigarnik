@@ -4,7 +4,22 @@
 
 @section('content')
     <h1 class="text-[22px] font-bold mb-1 mt-2">Dashboard</h1>
-    <p class="text-[#8A8171] text-sm mb-6">Loops abertos hoje.</p>
+    <p class="text-[#8A8171] text-sm mb-4">Loops abertos hoje.</p>
+
+    <div class="grid grid-cols-3 gap-2 mb-6">
+        <div class="bg-white border border-[#DDD5C7] rounded-2xl px-3 py-3 text-center">
+            <p class="text-lg font-bold">{{ $mediaHumor ? number_format($mediaHumor, 1) : '—' }}</p>
+            <p class="text-[10px] text-[#8A8171] uppercase tracking-wide mt-0.5">Humor médio</p>
+        </div>
+        <div class="bg-white border border-[#DDD5C7] rounded-2xl px-3 py-3 text-center">
+            <p class="text-lg font-bold">{{ $rituaisSemanaCount }}</p>
+            <p class="text-[10px] text-[#8A8171] uppercase tracking-wide mt-0.5">Rituais na semana</p>
+        </div>
+        <div class="bg-white border border-[#DDD5C7] rounded-2xl px-3 py-3 text-center">
+            <p class="text-lg font-bold">{{ $tarefasFechadasSemana }}</p>
+            <p class="text-[10px] text-[#8A8171] uppercase tracking-wide mt-0.5">Fechadas na semana</p>
+        </div>
+    </div>
 
     <form action="{{ route('tasks.store') }}" method="POST" class="bg-white border border-[#DDD5C7] rounded-2xl p-4 mb-8 space-y-3">
         @csrf

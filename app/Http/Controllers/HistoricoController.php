@@ -29,6 +29,30 @@ class HistoricoController extends Controller
         ]);
     }
 
+    public function exportarSemana(): View
+    {
+        $inicio = today()->startOfWeek();
+        $fim = today()->endOfWeek();
+
+        $entries = LoopEntry::with('task')
+            ->whereBetween('date', [$inicio, $fim])
+            ->orderBy('date')
+            ->get()
+            ->groupBy(fn ($entry) => $entry->date->toDateString());
+
+        $rituais = DailyRitual::whereBetween('date', [$inicio, $fim])
+            ->whereNotNull('finished_at')
+            ->get()
+            ->keyBy(fn ($r) => $r->date->toDateString());
+
+        return view('historico-pdf', [
+            'entriesPorDia' => $entries,
+            'rituais' => $rituais,
+            'inicio' => $inicio,
+            'fim' => $fim,
+        ]);
+    }
+
     private function calcularStreak(array $datasComRitual): int
     {
         $datas = collect($datasComRitual)->sort()->values();

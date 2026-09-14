@@ -14,9 +14,24 @@ class DashboardController extends Controller
         $tasksAbertas = Task::abertas()->latest()->get();
         $tasksEncerradas = Task::where('status', 'encerrada')->latest()->take(10)->get();
 
+        $inicioSemana = today()->startOfWeek();
+        $fimSemana = today()->endOfWeek();
+
+        $rituaisSemana = \App\Models\DailyRitual::whereBetween('date', [$inicioSemana, $fimSemana])
+            ->whereNotNull('finished_at')
+            ->get();
+
+        $mediaHumor = $rituaisSemana->avg('humor_saida');
+        $tarefasFechadasSemana = \App\Models\LoopEntry::whereBetween('date', [$inicioSemana, $fimSemana])
+            ->whereHas('task', fn ($q) => $q->where('status', 'encerrada'))
+            ->count();
+
         return view('dashboard', [
             'tasksAbertas' => $tasksAbertas,
             'tasksEncerradas' => $tasksEncerradas,
+            'mediaHumor' => $mediaHumor,
+            'rituaisSemanaCount' => $rituaisSemana->count(),
+            'tarefasFechadasSemana' => $tarefasFechadasSemana,
         ]);
     }
 

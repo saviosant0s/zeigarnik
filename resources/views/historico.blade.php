@@ -5,6 +5,7 @@
 @section('content')
     <div class="flex items-center justify-between mt-2 mb-1">
         <h1 class="text-[22px] font-bold">Histórico</h1>
+        <a href="{{ route('historico.exportar') }}" class="text-xs text-[#6B7A5E] font-medium">Exportar semana</a>
     </div>
     <div class="flex items-center gap-1.5 bg-[#EAF0E4] border border-[#B9C9A9] text-[#4C5A3E] px-3 py-2 rounded-xl w-fit mb-6 text-sm font-medium">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#4C5A3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

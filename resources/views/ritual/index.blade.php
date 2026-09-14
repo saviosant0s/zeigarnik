@@ -3,7 +3,21 @@
 @section('title', 'Ritual de Encerramento · Zeigarnik')
 
 @section('content')
-    <div x-data="{ segundos: 900 }" x-init="const t = setInterval(() => { if (segundos > 0) segundos--; else clearInterval(t) }, 1000)"
+    <div x-data="{ segundos: 900, notificado: false }"
+         x-init="
+            if ('Notification' in window && Notification.permission === 'default') { Notification.requestPermission() }
+            const t = setInterval(() => {
+                if (segundos > 0) {
+                    segundos--
+                    if (segundos === 60 && !notificado) {
+                        notificado = true
+                        if ('Notification' in window && Notification.permission === 'granted') {
+                            new Notification('Zeigarnik', { body: 'Falta 1 minuto pra fechar o ritual de encerramento.' })
+                        }
+                    }
+                } else { clearInterval(t) }
+            }, 1000)
+         "
          class="bg-white border border-[#DDD5C7] rounded-2xl p-5 mb-6 mt-2 text-center">
         <p class="text-xs text-[#8A8171] uppercase tracking-wide mb-1">Ritual de Encerramento</p>
         <span class="text-4xl font-bold font-mono tracking-tight"

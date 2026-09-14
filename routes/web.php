@@ -16,3 +16,4 @@ Route::post('/ritual-finish', [RitualController::class, 'finish'])->name('ritual
 
 Route::get('/checkin', [CheckinController::class, 'index'])->name('checkin');
 Route::get('/historico', [HistoricoController::class, 'index'])->name('historico');
+Route::get('/historico/exportar', [HistoricoController::class, 'exportarSemana'])->name('historico.exportar');
