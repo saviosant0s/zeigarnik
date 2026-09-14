@@ -25,6 +25,7 @@ class DashboardController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'required|in:chamado,codigo,outro',
+            'tags' => 'nullable|string|max:255',
         ]);
 
         Task::create($data);

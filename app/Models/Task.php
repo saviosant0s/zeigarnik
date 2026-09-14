@@ -14,6 +14,7 @@ class Task extends Model
         'title',
         'type',
         'status',
+        'tags',
     ];
 
     public function loopEntries(): HasMany

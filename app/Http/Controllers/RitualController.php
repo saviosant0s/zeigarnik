@@ -43,6 +43,7 @@ class RitualController extends Controller
         $data = $request->validate([
             'onde_parei' => 'required|string',
             'proxima_acao' => 'required|string',
+            'bloqueios' => 'nullable|string',
             'fechar_tarefa' => 'nullable|boolean',
         ]);
 
@@ -51,6 +52,7 @@ class RitualController extends Controller
             [
                 'onde_parei' => $data['onde_parei'],
                 'proxima_acao' => $data['proxima_acao'],
+                'bloqueios' => $data['bloqueios'] ?? null,
                 'encerrado_em' => now(),
             ]
         );

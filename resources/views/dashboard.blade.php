@@ -10,6 +10,8 @@
         @csrf
         <input type="text" name="title" placeholder="Nova tarefa..." required
             class="flex-1 bg-white border border-[#DDD5C7] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#6B7A5E]">
+        <input type="text" name="tags" placeholder="tags (opcional)"
+            class="w-40 bg-white border border-[#DDD5C7] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#6B7A5E]">
         <select name="type" class="bg-white border border-[#DDD5C7] rounded-lg px-3 py-2 text-sm">
             <option value="chamado">Chamado</option>
             <option value="codigo">Código</option>
@@ -25,11 +27,14 @@
                 <div>
                     <span class="font-medium">{{ $task->title }}</span>
                     <span class="text-xs text-[#A79E8C] ml-2 uppercase">{{ $task->type }}</span>
+                    @if ($task->tags)
+                        <span class="text-xs text-[#6B7A5E] ml-2">#{{ str_replace(',', ' #', $task->tags) }}</span>
+                    @endif
                 </div>
                 <a href="{{ route('ritual.form', $task) }}" class="text-xs text-[#6B7A5E] hover:text-[#5C6A50]">Fechar loop →</a>
             </li>
         @empty
-            <li class="text-[#A79E8C] text-sm">Nenhuma tarefa aberta. 🎉</li>
+            <li class="text-[#A79E8C] text-sm">Nenhuma tarefa aberta.</li>
         @endforelse
     </ul>
 

@@ -15,6 +15,7 @@ class LoopEntry extends Model
         'date',
         'onde_parei',
         'proxima_acao',
+        'bloqueios',
         'encerrado_em',
     ];
 

@@ -20,6 +20,7 @@
         <a href="{{ route('dashboard') }}" class="text-sm text-[#8A8171] hover:text-[#2A2722]">Dashboard</a>
         <a href="{{ route('ritual.index') }}" class="text-sm text-[#8A8171] hover:text-[#2A2722]">Ritual de Encerramento</a>
         <a href="{{ route('checkin') }}" class="text-sm text-[#8A8171] hover:text-[#2A2722]">Check-in</a>
+        <a href="{{ route('historico') }}" class="text-sm text-[#8A8171] hover:text-[#2A2722]">Histórico</a>
     </nav>
 
     <main class="max-w-3xl mx-auto px-6 py-10">

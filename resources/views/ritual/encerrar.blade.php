@@ -18,6 +18,11 @@
             <textarea name="proxima_acao" required rows="3"
                 class="w-full bg-white border border-[#DDD5C7] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#6B7A5E]">{{ old('proxima_acao', $entry->proxima_acao ?? '') }}</textarea>
         </div>
+        <div>
+            <label class="text-sm text-[#8A8171] block mb-2">Bloqueios (o que impediu avançar)</label>
+            <textarea name="bloqueios" rows="2"
+                class="w-full bg-white border border-[#DDD5C7] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#6B7A5E]">{{ old('bloqueios', $entry->bloqueios ?? '') }}</textarea>
+        </div>
         <label class="flex items-center gap-2 text-sm text-[#8A8171]">
             <input type="checkbox" name="fechar_tarefa" value="1" class="rounded bg-white border-[#DDD5C7]">
             Marcar tarefa como encerrada (concluída de vez)

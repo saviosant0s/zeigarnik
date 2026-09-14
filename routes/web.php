@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HistoricoController;
 use App\Http\Controllers\RitualController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,3 +15,4 @@ Route::post('/ritual/{task}', [RitualController::class, 'save'])->name('ritual.s
 Route::post('/ritual-finish', [RitualController::class, 'finish'])->name('ritual.finish');
 
 Route::get('/checkin', [CheckinController::class, 'index'])->name('checkin');
+Route::get('/historico', [HistoricoController::class, 'index'])->name('historico');
