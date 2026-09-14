@@ -11,9 +11,8 @@
     <nav class="border-b border-[#DDD5C7] px-6 py-4 flex gap-6 items-center">
         <span class="font-semibold text-[#2A2722] flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#6B7A5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M9 10a3 3 0 1 1 3 3v2"/>
-                <circle cx="12" cy="17.5" r="0.5" fill="#6B7A5E"/>
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
             Zeigarnik
         </span>
