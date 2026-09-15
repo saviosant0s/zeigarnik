@@ -21,6 +21,18 @@
         </div>
     </div>
 
+    @if ($compromissosHoje->isNotEmpty())
+        <h2 class="text-xs font-semibold text-[var(--text-muted)] mb-3 uppercase tracking-wide">Compromissos de hoje</h2>
+        <ul class="space-y-2 mb-8">
+            @foreach ($compromissosHoje as $c)
+                <li class="flex items-center gap-3 bg-[var(--surface)] border border-[var(--border)] rounded-2xl px-4 py-3 {{ $c->done ? 'opacity-50' : '' }}">
+                    <span class="text-sm font-mono text-[#6B7A5E] w-12 shrink-0">{{ $c->time_start ? \Carbon\Carbon::parse($c->time_start)->format('H:i') : '—' }}</span>
+                    <span class="text-[15px] {{ $c->done ? 'line-through' : '' }}">{{ $c->title }}</span>
+                </li>
+            @endforeach
+        </ul>
+    @endif
+
     <form action="{{ route('tasks.store') }}" method="POST" class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 mb-8 space-y-3">
         @csrf
         <input type="text" name="title" placeholder="Nova tarefa..." required

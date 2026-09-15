@@ -18,9 +18,12 @@ class CheckinController extends Controller
             ->where('date', $ontem)
             ->get();
 
+        $compromissosHoje = \App\Models\Appointment::doDia(today())->orderBy('time_start')->get();
+
         return view('checkin', [
             'ritualOntem' => $ritualOntem,
             'entriesOntem' => $entriesOntem,
+            'compromissosHoje' => $compromissosHoje,
         ]);
     }
 }

@@ -85,11 +85,12 @@
 
     <!-- Nav inferior fixa: thumb zone, 4 destinos, ícone + label -->
     <nav class="fixed bottom-0 left-0 right-0 bg-[var(--surface)] border-t border-[var(--border)] safe-bottom">
-        <div class="max-w-lg mx-auto grid grid-cols-4">
+        <div class="max-w-lg mx-auto grid grid-cols-5">
             @php
                 $items = [
                     ['route' => 'dashboard', 'label' => 'Início', 'icon' => 'M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5Z'],
                     ['route' => 'ritual.index', 'label' => 'Ritual', 'icon' => 'M12 8v4l3 2M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z'],
+                    ['route' => 'appointments.index', 'label' => 'Agenda', 'icon' => 'M8 2v3M16 2v3M3.5 8h17M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z'],
                     ['route' => 'checkin', 'label' => 'Check-in', 'icon' => 'm5 13 4 4L19 7'],
                     ['route' => 'historico', 'label' => 'Histórico', 'icon' => 'M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5M12 7v5l4 2'],
                 ];

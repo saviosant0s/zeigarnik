@@ -27,6 +27,20 @@
         <p class="text-[var(--text-muted)] text-xs mt-2">Feche cada loop: onde parou + próxima ação.</p>
     </div>
 
+    @if ($compromissosAmanha->isNotEmpty())
+        <div class="bg-[var(--accent-soft-bg)] border border-[var(--accent-soft-border)] rounded-2xl p-4 mb-6">
+            <p class="text-xs font-semibold text-[var(--accent-soft-text)] uppercase tracking-wide mb-2">Amanhã você tem</p>
+            <ul class="space-y-1">
+                @foreach ($compromissosAmanha as $c)
+                    <li class="text-sm text-[var(--accent-soft-text)]">
+                        <span class="font-mono">{{ $c->time_start ? \Carbon\Carbon::parse($c->time_start)->format('H:i') : '—' }}</span>
+                        {{ $c->title }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <ul class="space-y-2 mb-8">
         @forelse ($tasks as $task)
             <li>

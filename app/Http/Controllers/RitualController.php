@@ -19,10 +19,12 @@ class RitualController extends Controller
         );
 
         $tasks = Task::abertas()->latest()->get();
+        $compromissosAmanha = \App\Models\Appointment::doDia(today()->addDay())->orderBy('time_start')->get();
 
         return view('ritual.index', [
             'tasks' => $tasks,
             'ritual' => $ritual,
+            'compromissosAmanha' => $compromissosAmanha,
         ]);
     }
 

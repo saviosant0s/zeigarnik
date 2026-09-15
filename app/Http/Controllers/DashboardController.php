@@ -26,12 +26,15 @@ class DashboardController extends Controller
             ->whereHas('task', fn ($q) => $q->where('status', 'encerrada'))
             ->count();
 
+        $compromissosHoje = \App\Models\Appointment::doDia(today())->orderBy('time_start')->get();
+
         return view('dashboard', [
             'tasksAbertas' => $tasksAbertas,
             'tasksEncerradas' => $tasksEncerradas,
             'mediaHumor' => $mediaHumor,
             'rituaisSemanaCount' => $rituaisSemana->count(),
             'tarefasFechadasSemana' => $tarefasFechadasSemana,
+            'compromissosHoje' => $compromissosHoje,
         ]);
     }
 
