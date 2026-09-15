@@ -20,6 +20,7 @@ Route::get('/historico', [HistoricoController::class, 'index'])->name('historico
 Route::get('/historico/exportar', [HistoricoController::class, 'exportarSemana'])->name('historico.exportar');
 
 Route::get('/agenda', [AppointmentController::class, 'index'])->name('appointments.index');
+Route::get('/agenda/mes', [AppointmentController::class, 'mensal'])->name('appointments.mensal');
 Route::get('/agenda/novo', [AppointmentController::class, 'create'])->name('appointments.create');
 Route::post('/agenda', [AppointmentController::class, 'store'])->name('appointments.store');
 Route::get('/agenda/exportar.ics', [AppointmentController::class, 'exportarIcs'])->name('appointments.exportar');

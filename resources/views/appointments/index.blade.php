@@ -11,6 +11,8 @@
     </div>
 
     <div class="flex gap-2 mb-4 text-xs">
+        <a href="{{ route('appointments.mensal') }}" class="text-[#6B7A5E] font-medium">Ver mês</a>
+        <span class="text-[var(--text-faint)]">·</span>
         <a href="{{ route('appointments.exportar') }}" class="text-[#6B7A5E] font-medium">Exportar .ics</a>
         <span class="text-[var(--text-faint)]">·</span>
         <a href="{{ route('appointments.importar.form') }}" class="text-[#6B7A5E] font-medium">Importar .ics</a>

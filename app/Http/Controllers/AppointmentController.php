@@ -56,6 +56,42 @@ class AppointmentController extends Controller
         ]);
     }
 
+    public function mensal(Request $request): View
+    {
+        $referencia = $request->has('mes')
+            ? Carbon::parse($request->query('mes') . '-01')
+            : today()->startOfMonth();
+
+        $inicioMes = $referencia->copy()->startOfMonth();
+        $fimMes = $referencia->copy()->endOfMonth();
+        $inicioGrade = $inicioMes->copy()->startOfWeek();
+        $fimGrade = $fimMes->copy()->endOfWeek();
+
+        $tipo = $request->query('tipo');
+        $query = Appointment::whereBetween('date', [$inicioGrade, $fimGrade]);
+        if ($tipo) {
+            $query->where('type', $tipo);
+        }
+
+        $porDia = $query->get()->groupBy(fn ($a) => $a->date->toDateString());
+
+        $semanas = collect();
+        $cursor = $inicioGrade->copy();
+        while ($cursor->lte($fimGrade)) {
+            $semana = collect(range(0, 6))->map(fn ($i) => $cursor->copy()->addDays($i));
+            $semanas->push($semana);
+            $cursor->addWeek();
+        }
+
+        return view('appointments.mensal', [
+            'semanas' => $semanas,
+            'porDia' => $porDia,
+            'mesReferencia' => $inicioMes,
+            'tipoAtivo' => $tipo,
+            'totalMes' => $query->get()->filter(fn ($a) => $a->date->between($inicioMes, $fimMes))->count(),
+        ]);
+    }
+
     public function create(): View
     {
         return view('appointments.create');
