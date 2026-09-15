@@ -30,4 +30,15 @@
             Remover compromisso
         </button>
     </form>
+
+    @if ($appointment->recurrence_group)
+        <form action="{{ route('appointments.destroy-serie', $appointment) }}" method="POST" class="mt-2"
+              onsubmit="return confirm('Remover TODAS as ocorrências dessa série?')">
+            @csrf
+            @method('DELETE')
+            <button class="w-full text-[var(--danger-text)] text-xs py-2">
+                Remover série inteira
+            </button>
+        </form>
+    @endif
 @endsection

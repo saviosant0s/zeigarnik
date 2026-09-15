@@ -22,7 +22,12 @@ Route::get('/historico/exportar', [HistoricoController::class, 'exportarSemana']
 Route::get('/agenda', [AppointmentController::class, 'index'])->name('appointments.index');
 Route::get('/agenda/novo', [AppointmentController::class, 'create'])->name('appointments.create');
 Route::post('/agenda', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::get('/agenda/exportar.ics', [AppointmentController::class, 'exportarIcs'])->name('appointments.exportar');
+Route::get('/agenda/importar', [AppointmentController::class, 'importarIcsForm'])->name('appointments.importar.form');
+Route::post('/agenda/importar', [AppointmentController::class, 'importarIcs'])->name('appointments.importar');
 Route::get('/agenda/{appointment}/editar', [AppointmentController::class, 'edit'])->name('appointments.edit');
 Route::put('/agenda/{appointment}', [AppointmentController::class, 'update'])->name('appointments.update');
 Route::delete('/agenda/{appointment}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+Route::delete('/agenda/{appointment}/serie', [AppointmentController::class, 'destroySerie'])->name('appointments.destroy-serie');
 Route::post('/agenda/{appointment}/toggle', [AppointmentController::class, 'toggleDone'])->name('appointments.toggle');
+Route::post('/agenda/{appointment}/mover', [AppointmentController::class, 'moverData'])->name('appointments.mover');

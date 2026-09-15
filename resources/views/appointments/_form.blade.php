@@ -46,3 +46,20 @@
     <textarea name="notes" rows="2"
         class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[#6B7A5E]">{{ old('notes', $a->notes ?? '') }}</textarea>
 </div>
+
+@if (! $a)
+<div x-data="{ recorrencia: '{{ old('recurrence', 'nenhuma') }}' }">
+    <label class="text-sm text-[var(--text-muted)] block mb-2">Repetir</label>
+    <select name="recurrence" x-model="recorrencia" class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-3 py-3 text-[15px] mb-2">
+        <option value="nenhuma">Não repetir</option>
+        <option value="diaria">Todo dia</option>
+        <option value="semanal">Toda semana</option>
+        <option value="mensal">Todo mês</option>
+    </select>
+    <div x-show="recorrencia !== 'nenhuma'" x-cloak>
+        <label class="text-sm text-[var(--text-muted)] block mb-2">Repetir até</label>
+        <input type="date" name="recurrence_until" value="{{ old('recurrence_until') }}"
+            class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-3 py-3 text-[15px] focus:outline-none focus:border-[#6B7A5E]">
+    </div>
+</div>
+@endif

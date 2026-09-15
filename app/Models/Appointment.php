@@ -19,11 +19,15 @@ class Appointment extends Model
         'notes',
         'reminder_at',
         'done',
+        'recurrence',
+        'recurrence_until',
+        'recurrence_group',
     ];
 
     protected $casts = [
         'date' => 'date',
         'reminder_at' => 'datetime',
+        'recurrence_until' => 'date',
         'done' => 'boolean',
     ];
 
