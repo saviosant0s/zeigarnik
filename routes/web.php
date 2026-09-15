@@ -31,3 +31,13 @@ Route::delete('/agenda/{appointment}', [AppointmentController::class, 'destroy']
 Route::delete('/agenda/{appointment}/serie', [AppointmentController::class, 'destroySerie'])->name('appointments.destroy-serie');
 Route::post('/agenda/{appointment}/toggle', [AppointmentController::class, 'toggleDone'])->name('appointments.toggle');
 Route::post('/agenda/{appointment}/mover', [AppointmentController::class, 'moverData'])->name('appointments.mover');
+
+Route::get('/configuracoes', [\App\Http\Controllers\SettingsController::class, 'edit'])->name('settings.edit');
+Route::put('/configuracoes', [\App\Http\Controllers\SettingsController::class, 'update'])->name('settings.update');
+Route::post('/configuracoes/testar', [\App\Http\Controllers\SettingsController::class, 'testar'])->name('settings.testar');
+
+// endpoint pra disparar o cron dos lembretes via serviço externo (ex: cron-job.org, a cada minuto)
+Route::get('/cron/lembretes', function () {
+    \Illuminate\Support\Facades\Artisan::call('zeigarnik:lembretes');
+    return response('ok');
+});
