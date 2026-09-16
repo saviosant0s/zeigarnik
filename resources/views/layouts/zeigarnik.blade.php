@@ -15,14 +15,14 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        body { -webkit-tap-highlight-color: transparent; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+        body { -webkit-tap-highlight-color: transparent; font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif; }
         .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
-        h1 { font-family: 'Playfair Display', serif; letter-spacing: -0.01em; }
+        h1 { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.01em; }
         :root {
             --bg: #F7F5EE;
             --surface: #FFFFFF;
@@ -61,7 +61,7 @@
     <header class="px-4 pt-6 pb-2 flex items-center justify-between max-w-lg mx-auto">
         <div class="flex items-center gap-2">
             <img src="/images/icon.png" alt="Zeigarnik" class="w-8 h-8 rounded-lg shrink-0">
-            <span class="font-semibold text-[16px] tracking-tight" style="font-family: 'Playfair Display', serif;">Zeigarnik</span>
+            <span class="font-semibold text-[16px] tracking-tight" style="font-family: 'Plus Jakarta Sans', sans-serif;">Zeigarnik</span>
         </div>
         <div class="flex items-center gap-4">
             <a href="{{ route('settings.edit') }}" class="text-[var(--text-faint)]" aria-label="Configurações">
