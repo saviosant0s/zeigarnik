@@ -12,7 +12,7 @@
     <form action="{{ route('appointments.store') }}" method="POST" class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 space-y-4">
         @csrf
         @include('appointments._form')
-        <button class="w-full bg-[#6B7A5E] active:bg-[#5C6A50] text-white rounded-xl py-3.5 text-[15px] font-semibold">
+        <button class="w-full bg-[var(--accent)] active:bg-[var(--accent-hover)] text-white dark:text-[#0F0F10] rounded-xl py-3.5 text-[15px] font-semibold">
             Salvar compromisso
         </button>
     </form>

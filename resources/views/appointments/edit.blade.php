@@ -17,7 +17,7 @@
             <input type="checkbox" name="done" value="1" {{ $appointment->done ? 'checked' : '' }} class="w-5 h-5 rounded bg-[var(--bg)] border-[var(--border)]">
             Concluído
         </label>
-        <button class="w-full bg-[#6B7A5E] active:bg-[#5C6A50] text-white rounded-xl py-3.5 text-[15px] font-semibold">
+        <button class="w-full bg-[var(--accent)] active:bg-[var(--accent-hover)] text-white dark:text-[#0F0F10] rounded-xl py-3.5 text-[15px] font-semibold">
             Salvar alterações
         </button>
     </form>

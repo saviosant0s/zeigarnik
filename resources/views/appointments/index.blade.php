@@ -5,17 +5,17 @@
 @section('content')
     <div class="flex items-center justify-between mt-2 mb-4">
         <h1 class="text-[22px] font-bold">Agenda</h1>
-        <a href="{{ route('appointments.create') }}" class="bg-[#6B7A5E] active:bg-[#5C6A50] text-white rounded-xl px-3 py-2 text-sm font-medium">
+        <a href="{{ route('appointments.create') }}" class="bg-[var(--accent)] active:bg-[var(--accent-hover)] text-white dark:text-[#0F0F10] rounded-xl px-3 py-2 text-sm font-medium">
             + Novo
         </a>
     </div>
 
     <div class="flex gap-2 mb-4 text-xs">
-        <a href="{{ route('appointments.mensal') }}" class="text-[#6B7A5E] font-medium">Ver mês</a>
+        <a href="{{ route('appointments.mensal') }}" class="text-[var(--accent)] font-medium">Ver mês</a>
         <span class="text-[var(--text-faint)]">·</span>
-        <a href="{{ route('appointments.exportar') }}" class="text-[#6B7A5E] font-medium">Exportar .ics</a>
+        <a href="{{ route('appointments.exportar') }}" class="text-[var(--accent)] font-medium">Exportar .ics</a>
         <span class="text-[var(--text-faint)]">·</span>
-        <a href="{{ route('appointments.importar.form') }}" class="text-[#6B7A5E] font-medium">Importar .ics</a>
+        <a href="{{ route('appointments.importar.form') }}" class="text-[var(--accent)] font-medium">Importar .ics</a>
     </div>
 
     <div class="flex items-center justify-between mb-3 bg-[var(--surface)] border border-[var(--border)] rounded-xl px-2 py-2">
@@ -32,7 +32,7 @@
 
     @php
         $tipos = ['reuniao' => 'Reunião', 'prazo' => 'Prazo', 'chamada' => 'Chamada', 'outro' => 'Outro'];
-        $tipoCor = ['reuniao' => '#6B90A6', 'prazo' => '#B4674A', 'chamada' => '#6B7A5E', 'outro' => '#8A8171'];
+        $tipoCor = ['reuniao' => '#6B90A6', 'prazo' => '#B4674A', 'chamada' => 'var(--accent)', 'outro' => '#8A8171'];
     @endphp
 
     <div class="flex gap-1.5 mb-5 overflow-x-auto pb-1">
@@ -67,7 +67,7 @@
                 @drop.prevent="onDrop('{{ $dia->toDateString() }}')"
                 class="rounded-2xl">
                 <div class="flex items-center gap-2 mb-2 px-1">
-                    <h2 class="text-xs font-semibold uppercase tracking-wide {{ $dia->isToday() ? 'text-[#6B7A5E]' : 'text-[var(--text-muted)]' }}">
+                    <h2 class="text-xs font-semibold uppercase tracking-wide {{ $dia->isToday() ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]' }}">
                         {{ $dia->translatedFormat('D, d/m') }}
                     </h2>
                     @if ($dia->isToday())

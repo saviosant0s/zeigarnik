@@ -5,44 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Zeigarnik')</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/images/icon.png">
+    <link rel="apple-touch-icon" href="/images/icon.png">
     <script>
-        // aplica o tema antes do primeiro paint, evita flash de tela clara
         if (localStorage.getItem('zeigarnik-theme') === 'dark' ||
             (!localStorage.getItem('zeigarnik-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        body { -webkit-tap-highlight-color: transparent; }
+        body { -webkit-tap-highlight-color: transparent; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
         .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        h1 { font-family: 'Playfair Display', serif; letter-spacing: -0.01em; }
         :root {
-            --bg: #F4F0E8;
+            --bg: #F7F5EE;
             --surface: #FFFFFF;
-            --border: #DDD5C7;
-            --text: #2A2722;
-            --text-muted: #8A8171;
-            --text-faint: #A79E8C;
-            --accent-soft-bg: #EAF0E4;
-            --accent-soft-border: #B9C9A9;
-            --accent-soft-text: #4C5A3E;
+            --border: #E4DBC9;
+            --text: #0F0F10;
+            --text-muted: #3A3A3A;
+            --text-faint: #8A8171;
+            --accent: #0F0F10;
+            --accent-hover: #2A2A2C;
+            --accent-soft-bg: #DCCFB8;
+            --accent-soft-border: #C9B99C;
+            --accent-soft-text: #3A3A3A;
             --danger-text: #8A4A4A;
         }
         html.dark {
-            --bg: #211F1B;
-            --surface: #2C2A25;
-            --border: #423F37;
-            --text: #F0ECE3;
-            --text-muted: #A79E8C;
+            --bg: #0F0F10;
+            --surface: #1C1C1D;
+            --border: #333233;
+            --text: #F7F5EE;
+            --text-muted: #C9C2B4;
             --text-faint: #7D7566;
-            --accent-soft-bg: #2A3327;
-            --accent-soft-border: #45543D;
-            --accent-soft-text: #A9C79A;
+            --accent: #DCCFB8;
+            --accent-hover: #C9B99C;
+            --accent-soft-bg: #262523;
+            --accent-soft-border: #45433C;
+            --accent-soft-text: #DCCFB8;
             --danger-text: #D18F8F;
         }
+        /* no dark mode, botões de accent (bege marfim) precisam de texto escuro, não branco */
+        html.dark .btn-accent-text { color: #0F0F10 !important; }
         body { transition: background-color .15s ease, color .15s ease; }
     </style>
 </head>
@@ -50,11 +60,8 @@
     <!-- Topo: marca + toggle de tema -->
     <header class="px-4 pt-6 pb-2 flex items-center justify-between max-w-lg mx-auto">
         <div class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#6B7A5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-            <span class="font-semibold text-[15px] tracking-tight">Zeigarnik</span>
+            <img src="/images/icon.png" alt="Zeigarnik" class="w-8 h-8 rounded-lg shrink-0">
+            <span class="font-semibold text-[16px] tracking-tight" style="font-family: 'Playfair Display', serif;">Zeigarnik</span>
         </div>
         <div class="flex items-center gap-4">
             <a href="{{ route('settings.edit') }}" class="text-[var(--text-faint)]" aria-label="Configurações">
@@ -107,9 +114,9 @@
             @foreach ($items as $item)
                 @php $active = request()->routeIs($item['route']); @endphp
                 <a href="{{ route($item['route']) }}"
-                   class="flex flex-col items-center justify-center gap-1 py-3 text-[11px] {{ $active ? 'text-[#6B7A5E]' : 'text-[var(--text-faint)]' }}">
+                   class="flex flex-col items-center justify-center gap-1 py-3 text-[11px] {{ $active ? 'text-[var(--accent)]' : 'text-[var(--text-faint)]' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
-                         stroke="{{ $active ? '#6B7A5E' : '#A79E8C' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         stroke="{{ $active ? 'var(--accent)' : '#A79E8C' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="{{ $item['icon'] }}"/>
                     </svg>
                     <span class="{{ $active ? 'font-semibold' : '' }}">{{ $item['label'] }}</span>

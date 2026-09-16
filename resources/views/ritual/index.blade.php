@@ -46,7 +46,7 @@
             <li>
                 <a href="{{ route('ritual.form', $task) }}" class="flex items-center justify-between bg-[var(--surface)] border border-[var(--border)] rounded-2xl px-4 py-4 active:bg-[var(--bg)]">
                     <span class="font-medium text-[15px]">{{ $task->title }}</span>
-                    <span class="text-xs text-[#6B7A5E] font-medium">Registrar →</span>
+                    <span class="text-xs text-[var(--accent)] font-medium">Registrar →</span>
                 </a>
             </li>
         @empty
@@ -62,14 +62,14 @@
                 @for ($i = 1; $i <= 5; $i++)
                     <label class="cursor-pointer">
                         <input type="radio" name="humor_saida" value="{{ $i }}" class="peer sr-only">
-                        <span class="flex items-center justify-center h-12 rounded-xl bg-[var(--bg)] border border-[var(--border)] peer-checked:bg-[#6B7A5E] peer-checked:border-[#6B7A5E] peer-checked:text-white text-[15px] font-medium">{{ $i }}</span>
+                        <span class="flex items-center justify-center h-12 rounded-xl bg-[var(--bg)] border border-[var(--border)] peer-checked:bg-[var(--accent)] peer-checked:border-[var(--accent)] peer-checked:text-white dark:peer-checked:text-[#0F0F10] text-[15px] font-medium">{{ $i }}</span>
                     </label>
                 @endfor
             </div>
         </div>
         <textarea name="observacoes" placeholder="Observações (opcional)..." rows="2"
-            class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[#6B7A5E]"></textarea>
-        <button class="w-full bg-[#6B7A5E] active:bg-[#5C6A50] text-white rounded-xl py-3.5 text-[15px] font-semibold">
+            class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[var(--accent)]"></textarea>
+        <button class="w-full bg-[var(--accent)] active:bg-[var(--accent-hover)] text-white dark:text-[#0F0F10] rounded-xl py-3.5 text-[15px] font-semibold">
             Encerrar o dia
         </button>
     </form>

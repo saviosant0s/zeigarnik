@@ -37,7 +37,7 @@
                 <p class="text-xs text-[var(--text-faint)] mb-1">Onde parou</p>
                 <p class="text-sm text-[var(--text)] mb-3">{{ $entry->onde_parei }}</p>
                 <p class="text-xs text-[var(--text-faint)] mb-1">Primeira ação de hoje</p>
-                <p class="text-sm text-[#6B7A5E] font-medium">{{ $entry->proxima_acao }}</p>
+                <p class="text-sm text-[var(--accent)] font-medium">{{ $entry->proxima_acao }}</p>
             </li>
         @empty
             <li class="text-[var(--text-faint)] text-sm py-4 text-center">Nenhum registro de ontem.</li>

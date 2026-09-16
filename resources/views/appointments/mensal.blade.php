@@ -5,7 +5,7 @@
 @section('content')
     <div class="flex items-center justify-between mt-2 mb-1">
         <h1 class="text-[22px] font-bold">{{ $mesReferencia->translatedFormat('F \d\e Y') }}</h1>
-        <a href="{{ route('appointments.index') }}" class="text-xs text-[#6B7A5E] font-medium">Ver semana</a>
+        <a href="{{ route('appointments.index') }}" class="text-xs text-[var(--accent)] font-medium">Ver semana</a>
     </div>
     <p class="text-sm text-[var(--text-muted)] mb-4">{{ $totalMes }} {{ $totalMes === 1 ? 'compromisso' : 'compromissos' }} este mês.</p>
 
@@ -23,7 +23,7 @@
 
     @php
         $tipos = ['reuniao' => 'Reunião', 'prazo' => 'Prazo', 'chamada' => 'Chamada', 'outro' => 'Outro'];
-        $tipoCor = ['reuniao' => '#6B90A6', 'prazo' => '#B4674A', 'chamada' => '#6B7A5E', 'outro' => '#8A8171'];
+        $tipoCor = ['reuniao' => '#6B90A6', 'prazo' => '#B4674A', 'chamada' => 'var(--accent)', 'outro' => '#8A8171'];
     @endphp
 
     <div class="flex gap-1.5 mb-5 overflow-x-auto pb-1">
@@ -55,9 +55,9 @@
                 @endphp
                 <a href="{{ route('appointments.index', ['semana' => $dia->toDateString(), 'tipo' => $tipoAtivo]) }}"
                    class="aspect-square rounded-xl border flex flex-col items-center justify-center gap-0.5 relative
-                          {{ $dia->isToday() ? 'border-[#6B7A5E] bg-[var(--accent-soft-bg)]' : 'border-[var(--border)] bg-[var(--surface)]' }}
+                          {{ $dia->isToday() ? 'border-[var(--accent)] bg-[var(--accent-soft-bg)]' : 'border-[var(--border)] bg-[var(--surface)]' }}
                           {{ $foraDoMes ? 'opacity-30' : '' }}">
-                    <span class="text-xs font-medium {{ $dia->isToday() ? 'text-[#6B7A5E] font-bold' : '' }}">{{ $dia->day }}</span>
+                    <span class="text-xs font-medium {{ $dia->isToday() ? 'text-[var(--accent)] font-bold' : '' }}">{{ $dia->day }}</span>
                     @if ($itens->isNotEmpty())
                         <div class="flex gap-0.5">
                             @foreach ($itens->take(3) as $item)

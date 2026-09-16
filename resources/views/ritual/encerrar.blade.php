@@ -16,23 +16,23 @@
         <div>
             <label class="text-sm text-[var(--text-muted)] block mb-2">Onde eu parei</label>
             <textarea name="onde_parei" required rows="3"
-                class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[#6B7A5E]">{{ old('onde_parei', $entry->onde_parei ?? '') }}</textarea>
+                class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[var(--accent)]">{{ old('onde_parei', $entry->onde_parei ?? '') }}</textarea>
         </div>
         <div>
             <label class="text-sm text-[var(--text-muted)] block mb-2">Primeira ação de amanhã</label>
             <textarea name="proxima_acao" required rows="3"
-                class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[#6B7A5E]">{{ old('proxima_acao', $entry->proxima_acao ?? '') }}</textarea>
+                class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[var(--accent)]">{{ old('proxima_acao', $entry->proxima_acao ?? '') }}</textarea>
         </div>
         <div>
             <label class="text-sm text-[var(--text-muted)] block mb-2">Bloqueios (o que impediu avançar)</label>
             <textarea name="bloqueios" rows="2"
-                class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[#6B7A5E]">{{ old('bloqueios', $entry->bloqueios ?? '') }}</textarea>
+                class="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[15px] focus:outline-none focus:border-[var(--accent)]">{{ old('bloqueios', $entry->bloqueios ?? '') }}</textarea>
         </div>
         <label class="flex items-center gap-2 text-sm text-[var(--text-muted)] py-1">
             <input type="checkbox" name="fechar_tarefa" value="1" class="w-5 h-5 rounded bg-[var(--bg)] border-[var(--border)]">
             Marcar tarefa como encerrada
         </label>
-        <button class="w-full bg-[#6B7A5E] active:bg-[#5C6A50] text-white rounded-xl py-3.5 text-[15px] font-semibold">
+        <button class="w-full bg-[var(--accent)] active:bg-[var(--accent-hover)] text-white dark:text-[#0F0F10] rounded-xl py-3.5 text-[15px] font-semibold">
             Salvar loop
         </button>
     </form>
