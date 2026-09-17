@@ -60,14 +60,14 @@
     <!-- Topo: marca + toggle de tema -->
     <header class="px-4 pt-6 pb-2 flex items-center justify-between max-w-lg mx-auto">
         <div class="flex items-center gap-2">
-            <span class="w-8 h-8 shrink-0 rounded-lg bg-white flex items-center justify-center overflow-hidden p-1">
-                <img src="/images/logo-mark.png" alt="Zeigarnik" class="w-full h-full object-contain">
+            <span class="w-9 h-9 shrink-0 rounded-lg bg-white overflow-hidden">
+                <img src="/images/logo-mark.png" alt="Zeigarnik" class="w-full h-full object-cover scale-125">
             </span>
             <span class="font-semibold text-[16px] tracking-tight" style="font-family: 'Plus Jakarta Sans', sans-serif;">Zeigarnik</span>
         </div>
         <div class="flex items-center gap-4">
-            <a href="{{ route('settings.edit') }}" class="text-[var(--text-faint)]" aria-label="Configurações">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <a href="{{ route('settings.edit') }}" class="text-[var(--text-muted)]" aria-label="Configurações">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="2.5"/>
                     <path d="M12 5v2.2M12 16.8V19M19 12h-2.2M7.2 12H5M16.6 7.4l-1.6 1.6M9 15l-1.6 1.6M16.6 16.6 15 15M9 9 7.4 7.4"/>
                 </svg>
@@ -78,13 +78,13 @@
                     document.documentElement.classList.toggle('dark');
                     localStorage.setItem('zeigarnik-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
                 "
-                class="text-[var(--text-faint)]"
+                class="text-[var(--text-muted)]"
                 aria-label="Alternar tema">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px] dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="3.5"/>
                     <path d="M12 3.5v1.8M12 18.7v1.8M20.5 12h-1.8M5.3 12H3.5M17.7 6.3l-1.3 1.3M7.6 16.1l-1.3 1.3M17.7 17.7l-1.3-1.3M7.6 7.9 6.3 6.6"/>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px] hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"/>
                 </svg>
             </button>
