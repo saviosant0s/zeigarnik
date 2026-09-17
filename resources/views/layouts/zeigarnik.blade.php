@@ -100,7 +100,7 @@
 
     <!-- Nav inferior fixa: thumb zone, 4 destinos, ícone + label -->
     <nav class="fixed bottom-0 left-0 right-0 bg-[var(--surface)] border-t border-[var(--border)] safe-bottom">
-        <div class="max-w-lg mx-auto grid grid-cols-5">
+        <div class="max-w-lg mx-auto grid grid-cols-6">
             @php
                 $items = [
                     ['route' => 'dashboard', 'label' => 'Início', 'icon' => 'M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5Z'],
@@ -108,17 +108,18 @@
                     ['route' => 'appointments.index', 'label' => 'Agenda', 'icon' => 'M8 2v3M16 2v3M3.5 8h17M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z'],
                     ['route' => 'checkin', 'label' => 'Check-in', 'icon' => 'm5 13 4 4L19 7'],
                     ['route' => 'historico', 'label' => 'Histórico', 'icon' => 'M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5M12 7v5l4 2'],
+                    ['route' => 'biblioteca.index', 'label' => 'Biblioteca', 'icon' => 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z'],
                 ];
             @endphp
             @foreach ($items as $item)
                 @php $active = request()->routeIs($item['route']); @endphp
                 <a href="{{ route($item['route']) }}"
-                   class="flex flex-col items-center justify-center gap-1 py-3 text-[11px] {{ $active ? 'text-[var(--accent)]' : 'text-[var(--text-faint)]' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                   class="flex flex-col items-center justify-center gap-1 py-3 px-0.5 text-[9.5px] {{ $active ? 'text-[var(--accent)]' : 'text-[var(--text-faint)]' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none"
                          stroke="{{ $active ? 'var(--accent)' : '#A79E8C' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="{{ $item['icon'] }}"/>
                     </svg>
-                    <span class="{{ $active ? 'font-semibold' : '' }}">{{ $item['label'] }}</span>
+                    <span class="{{ $active ? 'font-semibold' : '' }} truncate max-w-full leading-tight">{{ $item['label'] }}</span>
                 </a>
             @endforeach
         </div>
