@@ -60,9 +60,6 @@
     <!-- Topo: marca + toggle de tema -->
     <header class="px-4 pt-6 pb-2 flex items-center justify-between max-w-lg mx-auto">
         <div class="flex items-center gap-2">
-            <span class="w-9 h-9 shrink-0 rounded-lg bg-white overflow-hidden">
-                <img src="/images/logo-mark.png" alt="Zeigarnik" class="w-full h-full object-cover scale-125">
-            </span>
             <span class="font-semibold text-[16px] tracking-tight" style="font-family: 'Plus Jakarta Sans', sans-serif;">Zeigarnik</span>
         </div>
         <div class="flex items-center gap-4">
