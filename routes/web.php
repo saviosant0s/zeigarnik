@@ -42,3 +42,7 @@ Route::get('/cron/lembretes', function () {
     \Illuminate\Support\Facades\Artisan::call('zeigarnik:lembretes');
     return response('ok');
 });
+
+Route::get('/biblioteca', [\App\Http\Controllers\BibliotecaController::class, 'index'])->name('biblioteca.index');
+Route::get('/biblioteca/{slug}', [\App\Http\Controllers\BibliotecaController::class, 'show'])->name('biblioteca.show');
+Route::post('/biblioteca/{slug}/lido', [\App\Http\Controllers\BibliotecaController::class, 'marcarLido'])->name('biblioteca.marcar-lido');
